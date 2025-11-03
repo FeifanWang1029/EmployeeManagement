@@ -43,3 +43,4 @@
 /Users/wang1029/Project/learning/employeeManagement/EmployeeManagement/obj/Debug/net9.0/EmployeeManagement.pdb
 /Users/wang1029/Project/learning/employeeManagement/EmployeeManagement/obj/Debug/net9.0/EmployeeManagement.genruntimeconfig.cache
 /Users/wang1029/Project/learning/employeeManagement/EmployeeManagement/obj/Debug/net9.0/ref/EmployeeManagement.dll
+/Users/wang1029/Project/learning/employeeManagement/EmployeeManagement/obj/Debug/net9.0/EmployeeManagement.sourcelink.json
