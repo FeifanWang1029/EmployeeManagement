@@ -13,23 +13,24 @@ RUN npm install
 COPY . .
 
 # Build the Angular application
-RUN npm run build --prod
+RUN npm run build -- --configuration=production
 
 # Stage 2: Serve the application with Nginx
 FROM nginx:alpine
 
 # Remove default nginx config and static files
 RUN rm -rf /usr/share/nginx/html/* && \
-    rm /etc/nginx/conf.d/default.conf
+    rm -f /etc/nginx/conf.d/default.conf
 
 # Copy the built application from the previous stage
-COPY --from=build /app/dist/employee-management-app/browser/ /usr/share/nginx/html/
+COPY --from=build /app/dist/employee-management-app/browser /usr/share/nginx/html
 
 # Copy Nginx configuration
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 # Verify files are copied
-RUN ls -la /usr/share/nginx/html
+RUN ls -la /usr/share/nginx/html && \
+    ls -la /usr/share/nginx/html/*.html || echo "No HTML files found"
 
 # Expose port 80
 EXPOSE 80
