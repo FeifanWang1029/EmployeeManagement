@@ -1,8 +1,10 @@
 # Employee Management System
 
-A full-stack employee management system built with Angular (frontend) and ASP.NET Core (backend).
+A comprehensive full-stack employee management system built using **Angular** (frontend) and **ASP.NET Core** (backend). This project demonstrates a modern web architecture with containerized deployment using Docker and Docker Compose.
 
-## Project Structure
+---
+
+## 📁 Project Structure
 
 ```
 employeeManagement/
@@ -14,105 +16,144 @@ employeeManagement/
 ├── backend/                 # ASP.NET Core backend application
 │   └── EmployeeManagement/
 │       ├── Controllers/     # API Controllers
-│       ├── Models/         # Data models
-│       ├── Repositories/   # Data access layer
-│       └── Dockerfile      # Backend Docker configuration
-└── docker-compose.yml      # Docker Compose configuration
+│       ├── Models/          # Data models
+│       ├── Repositories/    # Data access layer
+│       └── Dockerfile       # Backend Docker configuration
+└── docker-compose.yml       # Docker Compose configuration
 ```
 
-## 技术栈
+---
 
-### 前端
-- Angular 18
-- Bootstrap 5
-- TypeScript
-- Nginx (用于部署应用)
+## 🧰 Tech Stack
 
-### 后端
-- ASP.NET Core 9
-- Entity Framework Core (InMemory)
-- Repository 模式
+### Frontend
 
-## 环境要求
+- **Angular 18**
+- **Bootstrap 5**
+- **TypeScript**
+- **Nginx** (for serving the production build)
 
-- Docker
-- Docker Compose
-- .NET SDK 9.0 (本地开发用)
-- Node.js 18+ (本地开发用)
+### Backend
 
-## 快速开始
+- **ASP.NET Core 9**
+- **Entity Framework Core (InMemory)** for data persistence
+- **Repository Pattern** for structured data access
 
-1. 克隆仓库:
+---
+
+## ⚙️ Prerequisites
+
+Ensure you have the following installed:
+
+- [Docker](https://www.docker.com/)
+- [Docker Compose](https://docs.docker.com/compose/)
+- [.NET SDK 9.0](https://dotnet.microsoft.com/en-us/download) (for local development)
+- [Node.js 18+](https://nodejs.org/en) (for local development)
+
+---
+
+## 🚀 Quick Start
+
+1. **Clone the repository:**
+
    ```bash
    git clone https://github.com/FeifanWang1029/EmployeeManagement.git
    cd employeeManagement
    ```
 
-2. 使用 Docker Compose 运行:
+2. **Run with Docker Compose:**
+
    ```bash
    docker-compose up --build
    ```
 
-3. 访问应用:
-   - 前端: http://localhost:4200
-   - 后端 API: http://localhost:5182
+3. **Access the application:**
 
-## 本地开发设置
+   - Frontend: http://localhost:4200
+   - Backend API: http://localhost:5182
 
-### 前端
+---
+
+## 🧑‍💻 Local Development Setup
+
+### Frontend
+
 ```bash
 cd frontend/employee-management-app
 npm install
 ng serve
 ```
 
-### 后端
+### Backend
+
 ```bash
 cd backend/EmployeeManagement
 dotnet restore
 dotnet run
 ```
 
-## 主要功能
+---
 
-- 员工列表展示
-- 添加新员工
-- 编辑员工信息
-- 删除员工
-- 响应式设计
+## ✨ Key Features
 
-## API 端点
+- View employee list
+- Add new employees
+- Edit employee details
+- Delete employees
+- Responsive UI design
 
-- GET /api/Employee - 获取所有员工
-- GET /api/Employee/{id} - 通过 ID 获取员工
-- POST /api/Employee - 创建新员工
-- PUT /api/Employee/{id} - 更新员工信息
-- DELETE /api/Employee/{id} - 删除员工
+---
 
-## Docker 配置
+## 🔗 API Endpoints
 
-应用通过 Docker 容器化:
+| Method | Endpoint             | Description           |
+| ------ | -------------------- | --------------------- |
+| GET    | `/api/Employee`      | Get all employees     |
+| GET    | `/api/Employee/{id}` | Get employee by ID    |
+| POST   | `/api/Employee`      | Create a new employee |
+| PUT    | `/api/Employee/{id}` | Update an employee    |
+| DELETE | `/api/Employee/{id}` | Delete an employee    |
 
-- 前端容器:
-  - 构建 Angular 应用
-  - 通过 Nginx 提供服务
-  - 暴露端口 4200
+---
 
-- 后端容器:
-  - 运行 ASP.NET Core 应用
-  - 暴露端口 5182
+## 🐳 Docker Configuration
 
-## 后端配置
+This application is fully containerized using Docker.
 
-```
+- **Frontend Container:**
+
+  - Builds the Angular app
+  - Serves content using Nginx
+  - Exposes port **4200**
+
+- **Backend Container:**
+  - Runs ASP.NET Core application
+  - Exposes port **5182**
+
+---
+
+## ⚙️ Backend Setup
+
+Install required dependencies:
+
+```bash
 dotnet add package Microsoft.EntityFrameworkCore
-
 dotnet add package Microsoft.EntityFrameworkCore.InMemory
-
-
 ```
 
-访问 Api 时 404 的常见原因：
+If the API returns **404 Not Found**, check the following:
 
-- 确认路由和控制器：你的控制器是 `EmployeeManagement.Controllers.EmployeeController`（文件 EmployeeController.cs），路由为` api/[controller]`，所以请求路径 `/api/Employee `是正确的（路由对大小写通常不敏感）。
-- 确认已把控制器加入到管线：必须在 `Program.cs` 中调用 `builder.Services.AddControllers() `并在构建后调用`app.MapControllers()`，否则会返回 `404`
+- Ensure the controller `EmployeeController` exists under `EmployeeManagement.Controllers`.
+- Verify the route `[Route("api/[controller]")]` is correctly set.
+- Confirm that in `Program.cs`, you have included:
+
+  ```csharp
+  builder.Services.AddControllers();
+  app.MapControllers();
+  ```
+
+---
+
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).
