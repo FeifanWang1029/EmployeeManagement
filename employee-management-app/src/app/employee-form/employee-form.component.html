@@ -1,26 +1,56 @@
-<h2>{{ isEditMode ? "Edit Employee" : "Create Employee" }}</h2>
+<h2 class="text-center">
+  {{ isEditMode ? "Edit Employee" : "Create Employee" }}
+</h2>
 <div *ngIf="errMessage" class="message">{{ errMessage }}</div>
-<form (ngSubmit)="onSubmit()">
-  <div>
-    <label>FirstName:</label>
-    <input type="text" name="firstName" [(ngModel)]="employee.firstName" />
+<form class="border rounded p-3 w-50 mx-auto" (ngSubmit)="onSubmit()">
+  <div class="mb-3">
+    <label class="form-label">FirstName:</label>
+    <input
+      class="form-control"
+      type="text"
+      name="firstName"
+      [(ngModel)]="employee.firstName"
+    />
   </div>
-  <div>
-    <label>LastName:</label>
-    <input type="text" name="lastName" [(ngModel)]="employee.lastName" />
+  <div class="mb-3">
+    <label class="form-label">LastName:</label>
+    <input
+      class="form-control"
+      type="text"
+      name="lastName"
+      [(ngModel)]="employee.lastName"
+    />
   </div>
-  <div>
-    <label>Phone:</label>
-    <input type="phone" name="phone" [(ngModel)]="employee.phone" />
+  <div class="mb-3">
+    <label class="form-label">Phone:</label>
+    <input
+      class="form-control"
+      type="phone"
+      name="phone"
+      [(ngModel)]="employee.phone"
+    />
   </div>
-  <div>
-    <label>Email:</label>
-    <input type="email" name="email" [(ngModel)]="employee.email" />
+  <div class="mb-3">
+    <label class="form-label">Email:</label>
+    <input
+      class="form-control"
+      type="email"
+      name="email"
+      [(ngModel)]="employee.email"
+    />
   </div>
-  <div>
-    <label>Position:</label>
-    <input type="text" name="position" [(ngModel)]="employee.position" />
+  <div class="mb-3">
+    <label class="form-label">Position:</label>
+    <input
+      class="form-control"
+      type="text"
+      name="position"
+      [(ngModel)]="employee.position"
+    />
   </div>
-
-  <button type="submit">{{ isEditMode ? "Edit" : "Create" }}</button>
+  <div class="text-center">
+    <button class="btn btn-primary" type="submit">
+      {{ isEditMode ? "Edit" : "Create" }}
+    </button>
+  </div>
 </form>
