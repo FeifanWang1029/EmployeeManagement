@@ -1,0 +1,30 @@
+version: "3.8"
+
+services:
+  frontend:
+    build:
+      context: ./frontend/employee-management-app
+      dockerfile: Dockerfile
+    ports:
+      - "4200:80"
+    networks:
+      - employee-network
+
+  backend:
+    build:
+      context: ./backend/EmployeeManagement
+      dockerfile: Dockerfile
+    ports:
+      - "5182:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    networks:
+      - employee-network
+
+networks:
+  employee-network:
+    driver: bridge
+
+volumes:
+  frontend-data:
+  backend-data:
