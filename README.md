@@ -132,28 +132,6 @@ This application is fully containerized using Docker.
 
 ---
 
-## ⚙️ Backend Setup
-
-Install required dependencies:
-
-```bash
-dotnet add package Microsoft.EntityFrameworkCore
-dotnet add package Microsoft.EntityFrameworkCore.InMemory
-```
-
-If the API returns **404 Not Found**, check the following:
-
-- Ensure the controller `EmployeeController` exists under `EmployeeManagement.Controllers`.
-- Verify the route `[Route("api/[controller]")]` is correctly set.
-- Confirm that in `Program.cs`, you have included:
-
-  ```csharp
-  builder.Services.AddControllers();
-  app.MapControllers();
-  ```
-
----
-
 ## 📄 License
 
 This project is open source and available under the [MIT License](LICENSE).
